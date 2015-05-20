@@ -48,6 +48,7 @@ class GamePlay : public GameState
         std::string displayControls() const;
         void createEnnemy(std::string name, int w, int h, int speed, int value);
         void clearElements();
+        void deleteMovableElement(int id);
 
 };
 

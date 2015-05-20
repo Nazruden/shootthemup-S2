@@ -40,7 +40,7 @@ class Projectile : public MovableElement
         Spaceship* getShooter();
 
     // Methods
-        void update() override;
+        bool update() override;
 
         bool collide(Spaceship* s);
 };

@@ -119,9 +119,9 @@ void MovableElement::moveRight()
         _x += _dx;
 }
 
-void MovableElement::update()
+bool MovableElement::update()
 {
-
+    return true;
 }
 
 bool MovableElement::collideLeft(Spaceship* s)
@@ -172,11 +172,4 @@ bool MovableElement::collision(Spaceship* s)
     if (this->collideLeft(s) || this->collideRight(s) || this->collideTop(s) || this->collideBottom(s))
         return true;
     return false;
-}
-
-void MovableElement::deleteMovableElement()
-{
-    StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(_gamePlay->getStateView());
-    stateViewPlay->deleteGraphicToMovableElem(_id);
-    _gamePlay->deleteElement(_id);
 }

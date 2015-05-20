@@ -43,7 +43,7 @@ class Player : public Spaceship
         void dies();
         bool hasLost();
         void computeScore(int value);
-        void update() override;
+        bool update() override;
         void collide(Spaceship* s);
         void shoot() override;
 

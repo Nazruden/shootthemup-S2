@@ -37,7 +37,7 @@ class Ennemy : public Spaceship
         int getValue();
         // Methods
         void shoot() override;
-        void update() override;
+        bool update() override;
 };
 
 #endif // ENNEMY_H

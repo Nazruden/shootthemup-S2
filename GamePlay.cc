@@ -109,8 +109,8 @@ void GamePlay::enter()
 {
     GameState::enter();
     cout << "You've entered the game." << endl;
-    cout << "Temporary nickname :  player";
-    string nickname = "player";
+    cout << "Temporary nickname :  Player";
+    string nickname = "Player";
     /*
     cin >>  nickname;
     */
@@ -156,13 +156,35 @@ void GamePlay::deleteElement(int id)
     }
 }
 
+
+void GamePlay::deleteMovableElement(int id)
+{
+    /*// Deleting the graphic element
+    StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(_gamePlay->getStateView());
+    cout << _name << " id " << _id << " will be deleted " << endl;
+    stateViewPlay->deleteGraphicToMovableElem(_id);
+    // Deleting the element from GamePlay
+    _gamePlay->deleteElement(_id);*/
+
+    // Deleting the graphic element
+    StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(this->getStateView());
+    stateViewPlay->deleteGraphicToMovableElem(id);
+    // Deleting the element from GamePlay
+    this->deleteElement(id);
+}
+
+
 void GamePlay::update()
 {
     // Updating all movable elements
     for(auto e: _elements)
-        e->update();
+    {
+        if (!e->update())
+            this->deleteMovableElement(e->getId());
+    }
 
-    // If the level must increase or restarting
+
+    // If the level must increase or restart
     if ( (_player->getDistanceTraveled() == _level*LEVEL_FACTOR) || (_player->isKilled() && _player->getLives() > 0) )
     {
         // If the player has ended the level
@@ -176,9 +198,9 @@ void GamePlay::update()
         else if(_player->isKilled() && _player->getLives() > 0)
             _player->dies();
 
-        this->clearElements();
         _player->setX(PLAYER_X_INIT);
         _player->setY(PLAYER_Y_INIT);
+        this->clearElements();
     }
 
 
@@ -225,8 +247,16 @@ void GamePlay::createEnnemy(string name, int w, int h, int speed, int value)
 // Deleting all the elements from the vector, except the player
 void GamePlay::clearElements()
 {
-    cout << "clearing elements" << endl;
     for (auto e : _elements)
-        if (e->getId() != 0 && e != nullptr)
-            e->deleteMovableElement();
+        if (e->getId() != 0)
+        {
+            cout << e->getName() << " id " << e->getId() << " is going to be cleared " << endl;
+            this->deleteMovableElement(e->getId());
+        }
+
+    int i = 0;
+    while (i<1000)
+    {
+        i++;
+    }
 }

@@ -45,15 +45,13 @@ public:
     virtual void moveDown();
     virtual void moveLeft();
     virtual void moveRight();
-    virtual void update() = 0;
+    virtual bool update() = 0;
 
     bool collideLeft(Spaceship* s);
     bool collideRight(Spaceship* s);
     bool collideBottom(Spaceship* s);
     bool collideTop(Spaceship* s);
     bool collision(Spaceship* s);
-
-    void deleteMovableElement();
 
 };
 

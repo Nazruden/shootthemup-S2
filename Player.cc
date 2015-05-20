@@ -100,7 +100,7 @@ void Player::shoot()
         _currentWeapon->shoot();
 }
 
-void Player::update()
+bool Player::update()
 {
     _currentWeapon->updateProjectile();
     _distanceTraveled += PLAYER_DISTANCE_PER_FRAME;
@@ -108,6 +108,8 @@ void Player::update()
     for(auto s: _gamePlay->getSpaceships())
         if (this->collision(s))
             this->collide(s);
+
+    return true;
 }
 
 void Player::collide(Spaceship* s)

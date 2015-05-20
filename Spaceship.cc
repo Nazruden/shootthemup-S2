@@ -63,10 +63,11 @@ vector<Projectile*> Spaceship::getProjectiles()
 }
 
 /*** Methods ***/
-void Spaceship::update()
+bool Spaceship::update()
 {
-    MovableElement::update();
     _currentWeapon->updateProjectile();
+    return MovableElement::update();
+
 }
 
 string Spaceship::toString()
@@ -94,5 +95,9 @@ void Spaceship::deleteProjectiles()
 {
     for (auto p : getProjectiles())
         if (p != nullptr)
-            p->deleteMovableElement();
+        {
+            cout << p->getName() << " id " << _id << " will be deleted because shooter is dead " << endl;
+            _gamePlay->deleteMovableElement(_id);
+        }
+
 }

@@ -34,16 +34,21 @@ void Ennemy::shoot()
     _currentWeapon->shoot();
 }
 
-void Ennemy::update()
+bool Ennemy::update()
 {
-    _currentWeapon->updateProjectile();
+    // If the ennemy was killed or gets out of the screen
+    if (this->isKilled() || _x + _w <= 0 )
+        return false;
 
-    MovableElement::moveLeft();
+    else
+    {
+        _currentWeapon->updateProjectile();
 
-    // If the ennemy gets out of the screen
-    if (_x + _w <= 0)
-        this->deleteMovableElement();
+        MovableElement::moveLeft();
 
-    else if (_gamePlay->getPhase()% _shotFrequency == 0)
-        this->shoot();
+        if (_gamePlay->getPhase()% _shotFrequency == 0)
+            this->shoot();
+
+        return true;
+    }
 }

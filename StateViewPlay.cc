@@ -227,6 +227,7 @@ void StateViewPlay::deleteGraphicToMovableElem(int id)
         if (it->second->getId() == id)
         {
             cout << "in StateViewPlay, deleting " << it->second->getName() << " of id " << id << " from the map" << endl;
+            // Deleting the graphic element
             if (it->first != nullptr)
                 delete it->first;
             _graphicToMovable.erase(it);

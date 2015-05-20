@@ -49,13 +49,6 @@ bool Projectile::collide(Spaceship* ship)
         ennemy->setLifePoints(ennemy->getLifePoints() - _damages);
         // Updating player score
         player->computeScore(ennemy->getValue());
-
-        if (ennemy->isKilled())
-        {
-            cout << "ennemy was killed" << endl;
-            ennemy->deleteProjectiles();
-            ennemy->deleteMovableElement();
-        }
     }
     // Else if the projectile was shot by an ennemy and hit the player
     else if (player == nullptr && ennemy == nullptr)
@@ -67,7 +60,7 @@ bool Projectile::collide(Spaceship* ship)
     return effective;
 }
 
-void Projectile::update()
+bool Projectile::update()
 {
     cout << "update " << _name << " id " << _id << endl;
 
@@ -85,7 +78,10 @@ void Projectile::update()
 
         // If the projectile entirely gets out of the screen
         if (_x >= GAMEPLAY_WIDTH || _x +_w <= 0)
-            this->deleteMovableElement();
+        {
+            cout << _name << " of id " << _id << " out of the screen " << endl;
+            return false;
+        }
 
         else
         {
@@ -102,14 +98,13 @@ void Projectile::update()
                 i++;
             }
 
-            if (!reached)
-                cout << "update 1.1 " << _name << " id " << _id << endl;
-
-            else
+            if (reached)
             {
-                cout << "update 1.2 " << _name << " id " << _id << endl;
-                this->deleteMovableElement();
+                cout << _name << " id " << _id << " has reached a target " << endl;
+                return false;
             }
         }
     }
+
+    return true;
 }
