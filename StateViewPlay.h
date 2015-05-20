@@ -28,6 +28,9 @@ private:
     std::map<GraphicElement*, MovableElement*> _graphicToMovable;
     sf::Image _playerImg;
     sf::Image _backgroundImg;
+    sf::Image _backgroundTopBar;
+    sf::Image _backgroundHealthBar;
+    sf::Image _healthBar;
 
     sf::Image _ennemy0Img;
     sf::Image _shotImg;

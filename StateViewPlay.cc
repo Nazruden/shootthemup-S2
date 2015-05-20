@@ -12,8 +12,8 @@ using namespace std;
 
 StateViewPlay::StateViewPlay(std::string title, sf::RenderWindow* window, sf::Font* font) : StateView(title, window, font)
 {
-    // Creation the background graphic element
-    if (_backgroundImg.LoadFromFile("img/new/background_1.jpg"))
+    // Creation of the background
+    if (_backgroundImg.LoadFromFile("img/new/Backgrounds/bg_1.jpg"))
     {
         GraphicElement* background = new GraphicElement(&_backgroundImg);
         background->Resize(2340, GAMEPLAY_HEIGHT);
@@ -21,9 +21,17 @@ StateViewPlay::StateViewPlay(std::string title, sf::RenderWindow* window, sf::Fo
         background->setPosition(0, 0);
         _graphicElements.push_back(background);
     }
+    // Creation of the topbar background
+    if (_backgroundTopBar.LoadFromFile("img/new/HUD/bg_topbarv3.png"))
+    {
+        GraphicElement* backgroundTopBar = new GraphicElement(&_backgroundTopBar);
+        backgroundTopBar->setPosition(0,0);
+        backgroundTopBar->SetSubRect(sf::IntRect(0, 0, GAMEPLAY_WIDTH, 61));
+        _graphicElements.push_back(backgroundTopBar);
+    }
 
-    // Creation the player graphic element
-    if (_playerImg.LoadFromFile("img/new/playership.png"))
+    // Creation of the player graphic element
+    if (_playerImg.LoadFromFile("img/new/Spaceships/playership.png"))
     {
         GraphicElement* player = new GraphicElement(&_playerImg);
         player->setPosition(PLAYER_X_INIT, PLAYER_Y_INIT);
@@ -36,11 +44,11 @@ StateViewPlay::StateViewPlay(std::string title, sf::RenderWindow* window, sf::Fo
 
     // Loading the other images
     sf::Image img;
-    img.LoadFromFile("img/new/blue_projectiles.png");
+    img.LoadFromFile("img/new/Projectiles/blue_projectiles.png");
     _images["shot"] = img;
-    img.LoadFromFile("img/new/yellow_projectiles.png");
-    img.LoadFromFile("img/new/purple_projectiles.png");
-    img.LoadFromFile("img/new/red_projectiles.png");
+    img.LoadFromFile("img/new/Projectiles/yellow_projectiles.png");
+    img.LoadFromFile("img/new/Projectiles/purple_projectiles.png");
+    img.LoadFromFile("img/new/Projectiles/red_projectiles.png");
     img.LoadFromFile("img/ennemy_0.png");
     _images["ennemy0"] = img;
 
@@ -65,7 +73,6 @@ StateViewPlay::StateViewPlay(std::string title, sf::RenderWindow* window, sf::Fo
     _level.SetFont(*_font);
     _level.SetSize(20.f);
     _level.SetPosition(LEVEL_X, LEVEL_Y);
-
 
     _nbLives.SetColor(sf::Color::White);
     _nbLives.SetFont(*_font);
@@ -113,8 +120,9 @@ void StateViewPlay::update()
 {
     // Updating text elements
     GamePlay* statePlay = dynamic_cast<GamePlay*>(_state);
-    _score.SetText("Score : " + to_string(statePlay->getPlayer()->getScore()) );
-    _lifepoints.SetText(statePlay->getPlayer()->getName() + "'s lifepoints : " + to_string(statePlay->getPlayer()->getLifePoints()) );
+
+    _score.SetText( to_string(statePlay->getPlayer()->getScore()) );
+    _lifepoints.SetText( to_string(statePlay->getPlayer()->getLifePoints()) );
     _level.SetText("Level : " + to_string(statePlay->getLevel()) );
     _nbLives.SetText( "Lives : " + to_string(statePlay->getPlayer()->getLives()) );
 
@@ -169,6 +177,7 @@ void StateViewPlay::treatEvents()
 
         if (statePlay != nullptr)
         {
+            // KeyPressed events
             if (event.Type == sf::Event::KeyPressed)
             {
                 if (event.Key.Code == sf::Key::Space)
