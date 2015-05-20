@@ -125,6 +125,7 @@ void StateViewPlay::update()
             // Updating the position of each sprite
             int x = it->second->getX();
             int y = it->second->getY();
+            it->first->nextFrame();
             it->first->setPosition(x, y);
         }
     }
@@ -168,8 +169,23 @@ void StateViewPlay::treatEvents()
 
         if (statePlay != nullptr)
         {
-            if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::Space))
-                statePlay->getPlayer()->shoot();
+            if (event.Type == sf::Event::KeyPressed)
+            {
+                if (event.Key.Code == sf::Key::Space)
+                    statePlay->getPlayer()->shoot();
+
+                else if (event.Key.Code == sf::Key::Up)
+                    statePlay->getPlayer()->moveUp();
+
+                else if (event.Key.Code == sf::Key::Down)
+                    statePlay->getPlayer()->moveDown();
+
+                else if (event.Key.Code == sf::Key::Left)
+                    statePlay->getPlayer()->moveLeft();
+
+                else if (event.Key.Code == sf::Key::Right)
+                    statePlay->getPlayer()->moveRight();
+            }
         }
     }
     if (statePlay != nullptr)
@@ -188,6 +204,15 @@ void StateViewPlay::treatEvents()
 
             else if (Input.IsKeyDown(sf::Key::Right))
                 statePlay->getPlayer()->moveRight();
+
+            // Changing weapon
+            else if (Input.IsKeyDown(sf::Key::N)) // Incrementing weapon id
+                cout << "Changing weapon : ++" << endl;
+                // A REMPLIR
+            else if (Input.IsKeyDown(sf::Key::B)) // Decrementing weapon id
+                cout << "Changing weapon : --" << endl;
+                // A REMPLIR
+
         }
 }
 

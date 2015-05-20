@@ -39,7 +39,7 @@ void GraphicElement::setPerpetual(bool perpetuality){
 void GraphicElement::nextFrame(){
     if(_perpetual || _currentFrame < _nbFrames)
     {
-        int t = this->GetSubRect().GetWidth();
+
         this->FlipX(true);
     }
 }
