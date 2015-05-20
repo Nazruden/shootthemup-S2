@@ -42,6 +42,18 @@ StateViewPlay::StateViewPlay(std::string title, sf::RenderWindow* window, sf::Fo
         _graphicToMovable[player] = nullptr;
     }
 
+    // Creation of HP Bar background's
+    if (_backgroundHealthBar.LoadFromFile("img/new/HUD/bg_hpbar.png"))
+    {
+        GraphicElement* bgHealthBar = new GraphicElement(&_backgroundHealthBar);
+        player->setPosition(PLAYER_X_INIT, PLAYER_Y_INIT);
+        player->SetSubRect(sf::IntRect(0, 0, 300, 200));
+        player->Resize(PLAYER_WIDTH, PLAYER_HEIGHT);
+        player->setId(0);
+        // Will be linked to the player after
+        _graphicElements.push_back(backgroundTopBar);
+    }
+
     // Loading the other images
     sf::Image img;
     img.LoadFromFile("img/new/Projectiles/blue_projectiles.png");

@@ -39,8 +39,7 @@ void GraphicElement::setPerpetual(bool perpetuality){
 void GraphicElement::nextFrame(){
     if(_perpetual || _currentFrame < _nbFrames)
     {
-
-        this->FlipX(true);
+//        this->SetSubRect()
     }
 }
 void GraphicElement::setPosition(int x, int y){
