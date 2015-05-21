@@ -83,7 +83,7 @@ void Player::dies()
     setLifePoints(100);
 
     if (_nbLives != 0)
-        _gamePlay->getStateView()->displayTransition(_name + " died");
+        _gamePlay->getStateView()->displayTransition("You died");
 
     else if (_nbLives == 0)
         _gamePlay->getStateView()->displayTransition("Game Over");

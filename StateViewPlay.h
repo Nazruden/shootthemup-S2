@@ -8,14 +8,14 @@
 
 #include "StateView.h"
 
-const int SCORE_X = 10;
-const int SCORE_Y = 10;
+const int SCORE_X = 550;
+const int SCORE_Y = 15;
 const int LIFEPOINTS_X = 260;
-const int LIFEPOINTS_Y = 10;
-const int LEVEL_X = 650;
-const int LEVEL_Y = 10;
+const int LIFEPOINTS_Y = 15;
+const int LEVEL_X = 15;
+const int LEVEL_Y = 15;
 const int NBLIVES_X = 900;
-const int NBLIVES_Y = 10;
+const int NBLIVES_Y = 15;
 const int BACKGROUND_W = 2340;
 
 class MovableElement;

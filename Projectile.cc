@@ -62,16 +62,12 @@ bool Projectile::collide(Spaceship* ship)
 
 bool Projectile::update()
 {
-    cout << "update " << _name << " id " << _id << endl;
     // Projectiles have a negative speed so that they'll move left
     moveRight();
 
     // If the projectile entirely gets out of the screen
     if (_x >= GAMEPLAY_WIDTH || _x +_w <= 0)
-    {
-        cout << _name << " of id " << _id << " out of the screen " << endl;
         return false;
-    }
 
     else
     {
@@ -89,10 +85,7 @@ bool Projectile::update()
         }
 
         if (reached)
-        {
-            cout << _name << " id " << _id << " has reached a target " << endl;
             return false;
-        }
     }
 
     return true;
