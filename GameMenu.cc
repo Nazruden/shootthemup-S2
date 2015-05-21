@@ -8,8 +8,6 @@ using namespace std;
 /*** Ctors / Dtors ***/
 GameMenu::GameMenu(string title, GameModel* model) : GameState(title, model)
 {
-    _items.push_back("Play");
-    _items.push_back("Quit");
 }
 
 /*** Methods ***/

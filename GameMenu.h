@@ -10,7 +10,6 @@
 class GameMenu : public GameState
 {
 private:
-    std::vector<std::string> _items;
 
 public:
     // Constructors / Destructors
