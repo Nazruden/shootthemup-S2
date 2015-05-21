@@ -36,6 +36,11 @@ Spaceship* Projectile::getShooter()
     return _shooter;
 }
 
+void Projectile::setShooter(Spaceship* shooter)
+{
+    _shooter = shooter;
+}
+
 /*** Methods ***/
 
 // Collision between a projectile and a spaceship. Returns true if the projectile's shooter and the other ship have different types
@@ -43,25 +48,36 @@ bool Projectile::collide(Spaceship* ship)
 {
     bool effective = false;
 
-    Player* player = dynamic_cast<Player*>(_shooter);
-    Ennemy* ennemy = dynamic_cast<Ennemy*> (ship);
-
-    // If the projectile was shot by the player and hit an ennemy
-    if (player != nullptr && ennemy != nullptr)
+    // If the shooter is already dead (it means it was an ennemy), and if the projectile hits the player
+    if (_shooter == nullptr && ship->getId() == 0)
     {
-        cout << "ship was hit by " << _name << " of id " << _id << endl;
         effective = true;
-        ennemy->setLifePoints(ennemy->getLifePoints() - _damages);
-        // Updating player score
-        player->computeScore(ennemy->getValue());
-    }
-    // Else if the projectile was shot by an ennemy and hit the player
-    else if (player == nullptr && ennemy == nullptr)
-    {
-        cout << "player was hit by " << _name << " of id " << _id << endl;
-        effective = true;
+        // Player loses points of life
         ship->setLifePoints(ship->getLifePoints() - _damages);
     }
+
+    // Else if the shooter is still alive
+    else
+    {
+        Player* player = dynamic_cast<Player*>(_shooter);
+        Ennemy* ennemy = dynamic_cast<Ennemy*>(ship);
+
+        // If the projectile was shot by the player and hits an ennemy
+        if (player != nullptr && ennemy != nullptr)
+        {
+            effective = true;
+            ennemy->setLifePoints(ennemy->getLifePoints() - _damages);
+            // Updating player score
+            player->computeScore(ennemy->getValue());
+        }
+        // Else if the projectile was shot by an ennemy still alive and hits the player
+        else if (player == nullptr && ennemy == nullptr)
+        {
+            effective = true;
+            ship->setLifePoints(ship->getLifePoints() - _damages);
+        }
+    }
+
     return effective;
 }
 

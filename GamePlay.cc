@@ -22,12 +22,11 @@ GamePlay::GamePlay(string title, GameModel* model) : GameState(title, model), _w
 
 GamePlay::~GamePlay()
 {
-    if (_player != nullptr)
-        delete _player;
+    for (auto e : _elements)
+        if (e != nullptr)
+            this->deleteMovableElement(e->getId());
 
-    for (auto element : _elements)
-        if (element != nullptr)
-            delete element;
+    _elements.clear();
 }
 
 /*** Accessors ***/
@@ -149,11 +148,15 @@ void GamePlay::deleteElement(int id)
         if (_elements[i]->getId() == id)
         {
             cout << "In GamePlay, deleting " << _elements[i]->getName() << " of id " << id << " from the vector" << endl;
+            // If it's a spaceship, the link between him and his projectiles must be erased
+            Spaceship* spaceship = dynamic_cast<Spaceship*>(_elements[i]);
+            if (spaceship != nullptr)
+                spaceship->freeProjectiles();
+
+            // Deallocation
             delete _elements[i];
-            _elements[i] = nullptr;
-            cout << " size elements before " << _elements.size() << endl;
+            // Erasing the element from the vector
             _elements.erase(_elements.begin() + i);
-            cout << " size elements after " << _elements.size() << endl;
             found = true;
         }
         else

@@ -75,8 +75,6 @@
 		<Unit filename="GameView.h" />
 		<Unit filename="GraphicElement.cc" />
 		<Unit filename="GraphicElement.h" />
-		<Unit filename="Level.cc" />
-		<Unit filename="Level.h" />
 		<Unit filename="MovableElement.cc" />
 		<Unit filename="MovableElement.h" />
 		<Unit filename="MovableElement_UT.cc">

@@ -251,6 +251,7 @@ void StateViewPlay::deleteGraphicToMovableElem(int id)
             // Deleting the graphic element
             if (it->first != nullptr)
                 delete it->first;
+            it->second = nullptr;
             _graphicToMovable.erase(it);
             found = true;
         }

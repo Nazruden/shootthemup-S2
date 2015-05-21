@@ -91,13 +91,9 @@ bool Spaceship::isKilled()
         return false;
 }
 
-void Spaceship::deleteProjectiles()
+// The projectiles shot by the spaceship no longer belong to him if he is dead
+void Spaceship::freeProjectiles()
 {
     for (auto p : getProjectiles())
-        if (p != nullptr)
-        {
-            cout << p->getName() << " id " << _id << " will be deleted because shooter is dead " << endl;
-            _gamePlay->deleteMovableElement(_id);
-        }
-
+        p->setShooter(nullptr);
 }

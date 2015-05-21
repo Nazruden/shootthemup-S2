@@ -43,6 +43,7 @@ class Projectile : public MovableElement
         int getDamages();
         void setDamages(int damages);
         Spaceship* getShooter();
+        void setShooter(Spaceship* shooter);
 
     // Methods
         bool update() override;

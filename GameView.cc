@@ -40,6 +40,8 @@ GameView::~GameView()
     for (auto s: _stateViews)
         if (s != nullptr)
             delete s;
+
+    _stateViews.clear();
 }
 
 // Finds the state corresponding to the given title

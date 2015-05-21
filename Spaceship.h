@@ -35,7 +35,7 @@ class Spaceship : public MovableElement
         bool isKilled();
         virtual void shoot() = 0;
         virtual bool update();
-        void deleteProjectiles();
+        void freeProjectiles();
 };
 
 #endif
