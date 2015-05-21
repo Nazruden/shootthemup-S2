@@ -41,6 +41,7 @@ class Projectile : public MovableElement
         ~Projectile();
     // Accessors
         int getDamages();
+        void setDamages(int damages);
         Spaceship* getShooter();
 
     // Methods

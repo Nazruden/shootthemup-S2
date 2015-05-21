@@ -35,6 +35,7 @@ class Player : public Spaceship
         void setGamePlay(GamePlay* gamePlay);
         int getDistanceTraveled();
         void setDistanceTraveled(int d);
+
     // Methods
         void moveUp() override;
         void moveDown() override;

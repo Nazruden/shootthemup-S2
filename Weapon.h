@@ -20,6 +20,7 @@ class Weapon
 
     // Accessors
         int getProjectileDamages();
+        void setProjectilesDamages(int damages);
 
     // Methods
         void updateProjectile();

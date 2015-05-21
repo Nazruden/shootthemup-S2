@@ -28,6 +28,11 @@ int Weapon::getProjectileDamages()
     return _projectile->getDamages();
 }
 
+void Weapon::setProjectilesDamages(int damages)
+{
+    _projectile->setDamages(damages);
+}
+
 /*** Methods ***/
 bool Weapon::hasSupply()
 {
@@ -63,11 +68,13 @@ void Weapon::updateProjectile()
 {
     Player* player = dynamic_cast<Player*>(_holder);
 
+    // If the holder is the player, the projectiles start moving from his right
     if (player != nullptr)
         _projectile->setX( _holder->getX() + _holder->getW() );
 
+    // If the holder is an ennemy, it starts moving from his left
     else
-        _projectile->setX( _holder->getX() - _holder->getW() );
+        _projectile->setX( _holder->getX() );
 
     _projectile->setY( _holder->getY() + _holder->getH()/3 );
 }

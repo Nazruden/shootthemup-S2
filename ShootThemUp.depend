@@ -1688,13 +1688,13 @@
 1432200385 /home/edao/Documents/Projet/Code/STU/MovableElement.h
 	<string>
 
-1432204474 /home/edao/Documents/Projet/Code/STU/Projectile.h
+1432205861 /home/edao/Documents/Projet/Code/STU/Projectile.h
 	"GamePlay.h"
 	"MovableElement.h"
 	"Player.h"
 	<string>
 
-1432204600 /home/edao/Documents/Projet/Code/STU/GamePlay.h
+1432206086 /home/edao/Documents/Projet/Code/STU/GamePlay.h
 	"GameState.h"
 	<iostream>
 	<vector>
@@ -1707,12 +1707,12 @@
 	<string>
 	<vector>
 
-1432200385 /home/edao/Documents/Projet/Code/STU/Player.h
+1432206029 /home/edao/Documents/Projet/Code/STU/Player.h
 	"Spaceship.h"
 	<string>
 	<set>
 
-1432200385 /home/edao/Documents/Projet/Code/STU/Weapon.h
+1432206348 /home/edao/Documents/Projet/Code/STU/Weapon.h
 	"Player.h"
 
 1432200385 source:/home/edao/Documents/Projet/Code/STU/GameEnd.cc
@@ -1741,7 +1741,7 @@
 1432200385 /home/edao/Documents/Projet/Code/STU/StateView.h
 	<SFML/Graphics.hpp>
 
-1432204929 source:/home/edao/Documents/Projet/Code/STU/GamePlay.cc
+1432206386 source:/home/edao/Documents/Projet/Code/STU/GamePlay.cc
 	"GamePlay.h"
 	"Player.h"
 	"Ennemy.h"
@@ -1749,6 +1749,7 @@
 	"StateViewPlay.h"
 	"GraphicElement.h"
 	"Projectile.h"
+	"Weapon.h"
 	"time.h"
 	<map>
 	<vector>
@@ -1805,7 +1806,7 @@
 	"StateViewPlay.h"
 	<iostream>
 
-1432200385 source:/home/edao/Documents/Projet/Code/STU/Player.cc
+1432206023 source:/home/edao/Documents/Projet/Code/STU/Player.cc
 	"Player.h"
 	"Projectile.h"
 	"Weapon.h"
@@ -1839,13 +1840,13 @@
 	"GraphicElement.h"
 	<iostream>
 
-1432204008 source:/home/edao/Documents/Projet/Code/STU/Weapon.cc
+1432206374 source:/home/edao/Documents/Projet/Code/STU/Weapon.cc
 	"Weapon.h"
 	"Projectile.h"
 	"GraphicElement.h"
 	"StateViewPlay.h"
 
-1432203189 source:/home/edao/Documents/Projet/Code/STU/Projectile.cc
+1432205887 source:/home/edao/Documents/Projet/Code/STU/Projectile.cc
 	"Projectile.h"
 	"StateViewPlay.h"
 	"Ennemy.h"

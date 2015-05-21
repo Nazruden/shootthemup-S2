@@ -7,6 +7,7 @@
 #include "StateViewPlay.h"
 #include "GraphicElement.h"
 #include "Projectile.h"
+#include "Weapon.h"
 
 #include "time.h"
 #include <map>
@@ -192,7 +193,10 @@ void GamePlay::update()
         if (_player->getDistanceTraveled() == _level*LEVEL_FACTOR)
         {
             _level++;
+            // Player will start the new level
             _player->setDistanceTraveled(0);
+            // Player improves his shots level by level
+            _player->getCurrentWeapon()->setProjectilesDamages(PROJECTILE_DAMAGES_INIT_PLAYER + LEVEL_PLAYER_DAMAGES_FACTOR * _level);
             _stateView->displayTransition("Level " + to_string(_level));
         }
         // If the player has been killed
@@ -201,6 +205,7 @@ void GamePlay::update()
 
         _player->setX(PLAYER_X_INIT);
         _player->setY(PLAYER_Y_INIT);
+        // Clearing the elements from the screen
         this->clearElements();
     }
 

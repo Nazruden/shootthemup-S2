@@ -26,6 +26,11 @@ int Projectile::getDamages()
     return _damages;
 }
 
+void Projectile::setDamages(int damages)
+{
+    _damages = damages;
+}
+
 Spaceship* Projectile::getShooter()
 {
     return _shooter;
