@@ -136,7 +136,7 @@ void StateViewPlay::update()
     _score.SetText( to_string(statePlay->getPlayer()->getScore()) );
     _lifepoints.SetText( to_string(statePlay->getPlayer()->getLifePoints()) );
     _level.SetText("Level : " + to_string(statePlay->getLevel()) );
-    _nbLives.SetText( "Lives : " + to_string(statePlay->getPlayer()->getLives()) );
+    _nbLives.SetText( to_string(statePlay->getPlayer()->getLives()) );
 
     for (auto it = _graphicToMovable.begin(); it != _graphicToMovable.end(); it++)
     {

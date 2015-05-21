@@ -14,7 +14,7 @@ const int LIFEPOINTS_X = 260;
 const int LIFEPOINTS_Y = 15;
 const int LEVEL_X = 15;
 const int LEVEL_Y = 15;
-const int NBLIVES_X = 900;
+const int NBLIVES_X = 755;
 const int NBLIVES_Y = 15;
 const int BACKGROUND_W = 2340;
 

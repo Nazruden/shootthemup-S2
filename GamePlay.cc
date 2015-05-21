@@ -150,7 +150,10 @@ void GamePlay::deleteElement(int id)
         {
             cout << "In GamePlay, deleting " << _elements[i]->getName() << " of id " << id << " from the vector" << endl;
             delete _elements[i];
+            _elements[i] = nullptr;
+            cout << " size elements before " << _elements.size() << endl;
             _elements.erase(_elements.begin() + i);
+            cout << " size elements after " << _elements.size() << endl;
             found = true;
         }
         else
@@ -161,13 +164,6 @@ void GamePlay::deleteElement(int id)
 
 void GamePlay::deleteMovableElement(int id)
 {
-    /*// Deleting the graphic element
-    StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(_gamePlay->getStateView());
-    cout << _name << " id " << _id << " will be deleted " << endl;
-    stateViewPlay->deleteGraphicToMovableElem(_id);
-    // Deleting the element from GamePlay
-    _gamePlay->deleteElement(_id);*/
-
     // Deleting the graphic element
     StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(this->getStateView());
     stateViewPlay->deleteGraphicToMovableElem(id);
@@ -180,11 +176,8 @@ void GamePlay::update()
 {
     // Updating all movable elements
     for(auto e: _elements)
-    {
         if (!e->update())
             this->deleteMovableElement(e->getId());
-    }
-
 
     // If the level must increase or restart
     if ( (_player->getDistanceTraveled() == _level*LEVEL_FACTOR) || (_player->isKilled() && _player->getLives() > 0) )
@@ -217,7 +210,7 @@ void GamePlay::update()
     _phase++;
 
     // The value of an ennemy and its damages both increase with the level, thanks to factors
-    if(_phase%150 == 0 || _phase%200 == 0)
+    if(_phase%150 == 0 || _phase%200 == 0 || _phase%350 == 0)
         // Creating an ennemy of type 0
         this->createEnnemy("ennemy0", ENNEMY0_W, ENNEMY0_H, ENNEMY0_SPEED,
                            ENNEMY0_VALUE + _level * LEVEL_ENNEMY_VALUE_FACTOR, PROJECTILE_DAMAGES_ENNEMY0 + _level * LEVEL_ENNEMY_DAMAGES_FACTOR);
@@ -241,7 +234,7 @@ void GamePlay::createEnnemy(string name, int w, int h, int speed, int value, int
     // Generating a random y-coordinate, ENNEMY2 being the biggest ennemy in height
     srand(time(NULL));
     int y = rand()%(GAMEPLAY_HEIGHT - ENNEMY2_H) + 0;
-    int shotFrequency = rand()%500 + 50;
+    int shotFrequency = rand()%200 + 1;
 
     Ennemy* ennemy = new Ennemy(this, GAMEPLAY_WIDTH, y, w, h, speed, name, value, shotFrequency, damages);
     StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(_stateView);
@@ -259,15 +252,17 @@ void GamePlay::createEnnemy(string name, int w, int h, int speed, int value, int
 void GamePlay::clearElements()
 {
     for (auto e : _elements)
+    {
         if (e->getId() != 0)
         {
             cout << e->getName() << " id " << e->getId() << " is going to be cleared " << endl;
             this->deleteMovableElement(e->getId());
         }
+    }
 
-   /* int i = 0;
-    while (i<1000)
+    /*bool wait = true;
+    while (true)
     {
-        i++;
+
     }*/
 }

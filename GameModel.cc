@@ -93,4 +93,6 @@ GameModel::~GameModel()
     for (auto s: _states)
        if (s != nullptr)
             delete s;
+
+    _states.clear();
 }
