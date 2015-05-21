@@ -178,9 +178,18 @@ void GamePlay::deleteMovableElement(int id)
 void GamePlay::update()
 {
     // Updating all movable elements
-    for(auto e: _elements)
-        if (!e->update())
-            this->deleteMovableElement(e->getId());
+    unsigned int i = 0;
+    while (i < _elements.size())
+    {
+        if (!_elements[i]->update())
+        {
+            this->deleteMovableElement(_elements[i]->getId());
+            // Restarting from 0 because size of the vector has changed
+            i = 0;
+        }
+        else
+            i++;
+    }
 
     // If the level must increase or restart
     if ( (_player->getDistanceTraveled() == _level*LEVEL_FACTOR) || (_player->isKilled() && _player->getLives() > 0) )
@@ -189,8 +198,8 @@ void GamePlay::update()
         if (_player->getDistanceTraveled() == _level*LEVEL_FACTOR)
         {
             _level++;
-            // Player will start the new level
-            _player->setDistanceTraveled(0);
+            // Player's lifepoints restart from 100
+            _player->setLifePoints(100);
             // Player improves his shots level by level
             _player->getCurrentWeapon()->setProjectilesDamages(PROJECTILE_DAMAGES_INIT_PLAYER + LEVEL_PLAYER_DAMAGES_FACTOR * _level);
             _stateView->displayTransition("Level " + to_string(_level));
@@ -201,6 +210,8 @@ void GamePlay::update()
 
         _player->setX(PLAYER_X_INIT);
         _player->setY(PLAYER_Y_INIT);
+        // Player restarts the level (or the new level)
+        _player->setDistanceTraveled(0);
         // Clearing the elements from the screen
         this->clearElements();
     }
@@ -254,18 +265,13 @@ void GamePlay::createEnnemy(string name, int w, int h, int speed, int value, int
 // Deleting all the elements from the vector, except the player
 void GamePlay::clearElements()
 {
-    for (auto e : _elements)
+    unsigned int i = 1;
+    // Deleting all the elements except the player of id 0
+    while (i < _elements.size())
     {
-        if (e->getId() != 0)
-        {
-            cout << e->getName() << " id " << e->getId() << " is going to be cleared " << endl;
-            this->deleteMovableElement(e->getId());
-        }
+        cout << _elements[i]->getName() << " id " << _elements[i]->getId() << " is going to be cleared " << endl;
+        this->deleteMovableElement(_elements[i]->getId());
+        // Restarting from 1 because the size of the vector has changed
+        i = 1;
     }
-
-    /*bool wait = true;
-    while (true)
-    {
-
-    }*/
 }

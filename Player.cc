@@ -86,7 +86,7 @@ void Player::dies()
         _gamePlay->getStateView()->displayTransition("You died");
 
     else if (_nbLives == 0)
-        _gamePlay->getStateView()->displayTransition("Game Over");
+        _gamePlay->getStateView()->displayTransition("Game\n Over");
 }
 
 void Player::computeScore(int value)

@@ -56,8 +56,9 @@ vector<Projectile*> Spaceship::getProjectiles()
         // If the element is a projectile
         if( p != nullptr)
             // If the projectile was shot by this
-            if (p->getShooter()->getId() == _id)
-                projectiles.push_back(p);
+            if (p->getShooter() != nullptr)
+                if (p->getShooter()->getId() == _id)
+                    projectiles.push_back(p);
     }
     return projectiles;
 }
