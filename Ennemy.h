@@ -30,8 +30,7 @@ class Ennemy : public Spaceship
 
     public:
         // Constructors / Destructors
-        Ennemy(GamePlay* gamePlay, int x, int y, int w, int h, int dx, int dy, int lifePoints, std::string name, int value, int shotFrequency, Weapon* weapon);
-        Ennemy(GamePlay* gamePlay, int x, int y, int w, int h, int speed, std::string name, int value, int shotFrequency);
+        Ennemy(GamePlay* gamePlay, int x, int y, int w, int h, int speed, std::string name, int value, int shotFrequency, int damages);
 
         // Accessors
         int getValue();

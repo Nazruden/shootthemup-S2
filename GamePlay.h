@@ -9,7 +9,10 @@
 
 const int GAMEPLAY_WIDTH = 1000;
 const int GAMEPLAY_HEIGHT = 600;
+
 const int LEVEL_FACTOR = 1000;
+const int LEVEL_ENNEMY_DAMAGES_FACTOR = 4;
+const int LEVEL_ENNEMY_VALUE_FACTOR = 5;
 
 class Player;
 class MovableElement;
@@ -46,7 +49,7 @@ class GamePlay : public GameState
         //void displayConsole() override;
         void update() override;
         std::string displayControls() const;
-        void createEnnemy(std::string name, int w, int h, int speed, int value);
+        void createEnnemy(std::string name, int w, int h, int speed, int value, int damages);
         void clearElements();
         void deleteMovableElement(int id);
 

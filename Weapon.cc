@@ -42,11 +42,8 @@ void Weapon::shoot()
     if(hasSupply())
     {
         Projectile* p = new Projectile(_projectile);
-        /*Projectile* p = new Projectile(_holder->getGamePlay(), _holder->getX(), _holder->getY(), BASIC_PROJECTILE_WIDTH, BASIC_PROJECTILE_HEIGHT,
-                                       PROJECTILE_SPEED_INIT_PLAYER, 0, "projectile", PROJECTILE_DAMAGES_ENNEMY0, PROJECTILE_SUPPLY_INIT_PLAYER, PROJECTILE_RANGE_INIT_PLAYER,
-                                       _holder);*/
-
         cout << "new projectile of id " << p->getId()<< endl;
+
         StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(p->getGamePlay()->getStateView());
 
         GraphicElement* projectileGraphic = new GraphicElement(stateViewPlay->getImg("shot"));

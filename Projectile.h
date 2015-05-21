@@ -19,6 +19,10 @@ const int BASIC_PROJECTILE_WIDTH = 42;
 const int BASIC_PROJECTILE_HEIGHT = 20;
 
 const int PROJECTILE_DAMAGES_ENNEMY0 = 10;
+const int PROJECTILE_DAMAGES_ENNEMY1 = 12;
+const int PROJECTILE_DAMAGES_ENNEMY2 = 15;
+
+const int PROJECTILE_SPEED_ENNEMY = -10;
 
 class Spaceship;
 class Projectile : public MovableElement

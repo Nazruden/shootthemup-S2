@@ -9,15 +9,12 @@
 using namespace std;
 
 /*** Ctors / Dtors ***/
-Ennemy::Ennemy(GamePlay* gamePlay, int x, int y, int w, int h, int dx, int dy, int lifePoints, string name, int value, int shotFrequency, Weapon* weapon)
-    : Spaceship(gamePlay, x, y, w, h, dx, dy, lifePoints, name, weapon), _value(value), _shotFrequency(shotFrequency)
-{}
 
 // Basic ennemy
-Ennemy::Ennemy(GamePlay* gamePlay, int x, int y, int w, int h, int speed, string name, int value, int shotFrequency)
+Ennemy::Ennemy(GamePlay* gamePlay, int x, int y, int w, int h, int speed, string name, int value, int shotFrequency, int damages)
     : Spaceship(gamePlay, x, y, w, h, speed, speed, 10, name), _value(value), _shotFrequency(shotFrequency)
 {
-    Projectile* projectile = new Projectile(gamePlay, _x, _y, _w, _h, -10, 0, "ennemy_projectile", 10,-1, 800, this);
+    Projectile* projectile = new Projectile(gamePlay, _x, _y, _w, _h, PROJECTILE_SPEED_ENNEMY, 0, "ennemy_projectile", damages,-1, 800, this);
     Weapon* ennemyWeapon = new Weapon("ennemy_weapon", -1, projectile, this);
     _currentWeapon = ennemyWeapon;
 }

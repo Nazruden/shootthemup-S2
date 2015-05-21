@@ -6,6 +6,7 @@
 #include "StateView.h"
 #include "StateViewPlay.h"
 #include "GraphicElement.h"
+#include "Projectile.h"
 
 #include "time.h"
 #include <map>
@@ -209,30 +210,35 @@ void GamePlay::update()
 
     // Incrementing phase
     _phase++;
+
+    // The value of an ennemy and its damages both increase with the level, thanks to factors
     if(_phase%150 == 0 || _phase%200 == 0)
         // Creating an ennemy of type 0
-        this->createEnnemy("ennemy0", ENNEMY0_W, ENNEMY0_H, ENNEMY0_SPEED, ENNEMY0_VALUE);
+        this->createEnnemy("ennemy0", ENNEMY0_W, ENNEMY0_H, ENNEMY0_SPEED,
+                           ENNEMY0_VALUE + _level * LEVEL_ENNEMY_VALUE_FACTOR, PROJECTILE_DAMAGES_ENNEMY0 + _level * LEVEL_ENNEMY_DAMAGES_FACTOR);
 
     else if (_phase%500 == 0 || _phase%999 == 0)
         // Creating an ennemy of type 1
-        this->createEnnemy("ennemy1", ENNEMY1_W, ENNEMY1_H, ENNEMY1_SPEED, ENNEMY1_VALUE);
+        this->createEnnemy("ennemy1", ENNEMY1_W, ENNEMY1_H, ENNEMY1_SPEED,
+                           ENNEMY1_VALUE + _level * LEVEL_ENNEMY_VALUE_FACTOR, PROJECTILE_DAMAGES_ENNEMY1 + _level * LEVEL_ENNEMY_DAMAGES_FACTOR);
 
     else if (_phase%650 == 0)
     {
         // Creating an ennemy of type 2
-        this->createEnnemy("ennemy2", ENNEMY2_W, ENNEMY2_H, ENNEMY2_SPEED, ENNEMY2_VALUE);
+        this->createEnnemy("ennemy2", ENNEMY2_W, ENNEMY2_H, ENNEMY2_SPEED,
+                           ENNEMY2_VALUE + _level * LEVEL_ENNEMY_VALUE_FACTOR, PROJECTILE_DAMAGES_ENNEMY2 + _level * LEVEL_ENNEMY_DAMAGES_FACTOR);
         _phase = 0;
     }
 }
 
-void GamePlay::createEnnemy(string name, int w, int h, int speed, int value)
+void GamePlay::createEnnemy(string name, int w, int h, int speed, int value, int damages)
 {
-    // Generating a random y-coordinate, ENNEMY0 being the biggest ennemy
+    // Generating a random y-coordinate, ENNEMY2 being the biggest ennemy in height
     srand(time(NULL));
     int y = rand()%(GAMEPLAY_HEIGHT - ENNEMY2_H) + 0;
     int shotFrequency = rand()%500 + 50;
 
-    Ennemy* ennemy = new Ennemy(this, GAMEPLAY_WIDTH, y, w, h, speed, name, value, shotFrequency);
+    Ennemy* ennemy = new Ennemy(this, GAMEPLAY_WIDTH, y, w, h, speed, name, value, shotFrequency, damages);
     StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(_stateView);
     // Creating the graphic ennemy element
     GraphicElement* ennemyGraphic = new GraphicElement(stateViewPlay->getImg(name));
