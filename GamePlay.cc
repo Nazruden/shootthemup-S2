@@ -252,12 +252,11 @@ void GamePlay::clearElements()
         {
             cout << e->getName() << " id " << e->getId() << " is going to be cleared " << endl;
             this->deleteMovableElement(e->getId());
-            //_elements.erase(e);
         }
 
-    int i = 0;
+   /* int i = 0;
     while (i<1000)
     {
         i++;
-    }
+    }*/
 }

@@ -63,46 +63,35 @@ bool Projectile::collide(Spaceship* ship)
 bool Projectile::update()
 {
     cout << "update " << _name << " id " << _id << endl;
+    // Projectiles have a negative speed so that they'll move left
+    moveRight();
 
-    if (!_shooter->isKilled())
+    // If the projectile entirely gets out of the screen
+    if (_x >= GAMEPLAY_WIDTH || _x +_w <= 0)
     {
-        Player* player = dynamic_cast<Player*>(_shooter);
+        cout << _name << " of id " << _id << " out of the screen " << endl;
+        return false;
+    }
 
-        // If the shooter is the player
-        if (player != nullptr)
-            moveRight();
+    else
+    {
+        bool reached = false;
+        int unsigned i = 0;
+        vector<Spaceship*> spaceships = _gamePlay->getSpaceships();
 
-        // Else if it is an ennemy
-        else
-            moveLeft();
-
-        // If the projectile entirely gets out of the screen
-        if (_x >= GAMEPLAY_WIDTH || _x +_w <= 0)
+        // Searching a collision with a ship
+        while (i < spaceships.size() && !reached)
         {
-            cout << _name << " of id " << _id << " out of the screen " << endl;
-            return false;
+            // If there is a collision
+            if (this->collision(spaceships[i]))
+                reached = this->collide(spaceships[i]);
+            i++;
         }
 
-        else
+        if (reached)
         {
-            bool reached = false;
-            int unsigned i = 0;
-            vector<Spaceship*> spaceships = _gamePlay->getSpaceships();
-
-            // Searching a collision with a ship
-            while (i < spaceships.size() && !reached)
-            {
-                // If there is a collision
-                if (this->collision(spaceships[i]))
-                    reached = this->collide(spaceships[i]);
-                i++;
-            }
-
-            if (reached)
-            {
-                cout << _name << " id " << _id << " has reached a target " << endl;
-                return false;
-            }
+            cout << _name << " id " << _id << " has reached a target " << endl;
+            return false;
         }
     }
 
