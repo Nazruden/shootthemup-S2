@@ -12,9 +12,7 @@ StateView::StateView(std::string title, sf::RenderWindow* window, sf::Font* font
 {}
 
 StateView::~StateView()
-{
-
-}
+{}
 
 /*** Accessors ***/
 

@@ -21,8 +21,6 @@ protected :
     sf::Font* _font;
     sf::String _transitionText;
     GameState* _state;
-    //std::map<MovableElement *, GraphicElement *> _movableGraphicElements;
-
 
 public:
     StateView(std::string title, sf::RenderWindow* window, sf::Font *font);
@@ -31,9 +29,6 @@ public:
     virtual void setState(GameState* state);
     std::string getTitle();
 
-    //void clearMovableGraphicElements();
-    //void addMovableGraphicElement(MovableElement* elem);
-    //virtual void synchronize();
     virtual void update();
     virtual void draw() = 0;
     virtual void treatEvents() = 0;
