@@ -195,7 +195,7 @@ void StateViewMenu::treatEvents()
 
             // Hovering the menu
             if ((Input.GetMouseX() >= VIEW_WIDTH - MENU_WIDTH) && (Input.GetMouseX() < VIEW_WIDTH)
-                && (Input.GetMouseY() >= FIRSTBUTTON_Y) && (Input.GetMouseY() < FIRSTBUTTON_Y + _menuButtons.size() * BUTTON_H))
+                && (Input.GetMouseY() >= FIRSTBUTTON_Y) && (Input.GetMouseY() < FIRSTBUTTON_Y + (int)_menuButtons.size() * BUTTON_H))
             {
                 unsigned int y = Input.GetMouseY() - FIRSTBUTTON_Y;
                 if(y > 0 && y < _menuButtons.size() * BUTTON_H)
