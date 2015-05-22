@@ -197,8 +197,8 @@ void GamePlay::update()
         if (_player->getDistanceTraveled() == _level*LEVEL_FACTOR)
         {
             _level++;
-            // Player's lifepoints restart from 100
-            _player->setLifePoints(100);
+            // Player's lifepoints restart and improve level by level
+            _player->setLifePoints(PLAYER_LIFEPOINTS_INIT + _level * LEVEL_PLAYER_LIFEPOINTS_FACTOR);
             // Player improves his shots level by level
             _player->getCurrentWeapon()->setProjectilesDamages(PROJECTILE_DAMAGES_INIT_PLAYER + LEVEL_PLAYER_DAMAGES_FACTOR * _level);
             _stateView->displayTransition("Level " + to_string(_level));
