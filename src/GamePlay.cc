@@ -114,9 +114,7 @@ void GamePlay::enter()
     cout << "You've entered the game." << endl;
     cout << "Temporary nickname :  Player";
     string nickname = "Player";
-    /*
-    cin >>  nickname;
-    */
+
     initPlayer(nickname);
 
     cout << endl;
@@ -182,6 +180,7 @@ void GamePlay::update()
     unsigned int i = 0;
     while (i < _elements.size())
     {
+        // update() returns false if the element must be destroyed
         if (!_elements[i]->update())
         {
             this->deleteMovableElement(_elements[i]->getId());
