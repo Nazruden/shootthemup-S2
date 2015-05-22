@@ -42,8 +42,9 @@ void GraphicElement::nextFrame(){
     // If the graphicElement's animation didn't end
     if(_perpetual || _currentFrame < _nbFrames)
     {
+        _currentFrame++;
         SetSubRect(sf::IntRect(
-                (_currentFrame-1) * this->GetSubRect().GetWidth() ,
+                ((_currentFrame)-1) * this->GetSubRect().GetWidth() ,
                 0 ,
                 (_currentFrame) * this->GetSubRect().GetWidth() ,
                 this->GetSubRect().GetHeight()
@@ -56,7 +57,6 @@ void GraphicElement::nextFrame(){
         if(_perpetual && _currentFrame == _nbFrames)
             _currentFrame = 1;
 
-        _currentFrame++;
     }
 }
 void GraphicElement::setNumberFrames(int nbFrames){
