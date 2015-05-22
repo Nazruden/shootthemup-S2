@@ -8,7 +8,7 @@
 using namespace std;
 
 /*** Ctors / Dtors ***/
-Weapon::Weapon(string name, int supply, Projectile* projectile, Spaceship* holder) : _name(name), _supply(supply), _shotState(0), _projectile(projectile), _holder(holder)
+Weapon::Weapon(string name, int supply, Projectile* projectile, Spaceship* holder) : _name(name), _supply(supply), _shotState(0), _projectile(projectile), _holder(holder), _nbShotStates(0)
 {
     if(_supply!=-1)
         _infinite = false;
@@ -24,11 +24,11 @@ Weapon::~Weapon()
 
 /*** Accessors ***/
 void Weapon::nextShotState(){
-    if(_shotState<2)
+    if(_shotState < _nbShotStates)
         _shotState++;
 }
 void Weapon::lastShotState(){
-    if(_shotState>0)
+    if(_shotState > 0)
         _shotState--;
 }
 int Weapon::getShotState(){
@@ -52,7 +52,14 @@ bool Weapon::hasSupply()
     else
         return false;
 }
-
+void Weapon::unlockSecondaryShoot()
+{
+    _nbShotStates = 1;
+}
+void Weapon::unlockThirdShoot()
+{
+    _nbShotStates = 2;
+}
 void Weapon::shoot()
 {
     switch(_shotState)
@@ -111,6 +118,7 @@ void Weapon::secondaryShoot()
             GraphicElement* projectileGraphic1 = new GraphicElement(stateViewPlay->getImg("red_shot"), 2);
             projectileGraphic1->setPosition(p1->getX(), p1->getY());
             projectileGraphic1->SetSubRect(sf::IntRect(0, 0, 46, 20));
+            projectileGraphic1->SetRotation(-45);
             projectileGraphic1->setId(p1->getId());
 
             GraphicElement* projectileGraphic2 = new GraphicElement(stateViewPlay->getImg("red_shot"), 2);
@@ -120,6 +128,7 @@ void Weapon::secondaryShoot()
 
             GraphicElement* projectileGraphic3 = new GraphicElement(stateViewPlay->getImg("red_shot"), 2);
             projectileGraphic3->setPosition(p3->getX(), p3->getY());
+            projectileGraphic3->SetRotation(45);
             projectileGraphic3->SetSubRect(sf::IntRect(0, 0, 46, 20));
             projectileGraphic3->setId(p3->getId());
 

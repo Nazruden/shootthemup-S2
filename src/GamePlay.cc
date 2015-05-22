@@ -253,14 +253,17 @@ void GamePlay::createEnnemy(string name, int w, int h, int speed, int value, int
     int y = rand()%(GAMEPLAY_HEIGHT - ENNEMY2_H) + 0;
     int shotFrequency = rand()%200 + 1;
 
+    // Creating the ennemy
     Ennemy* ennemy = new Ennemy(this, GAMEPLAY_WIDTH, y, w, h, speed, name, value, shotFrequency, damages);
     StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(_stateView);
+
     // Creating the graphic ennemy element
     GraphicElement* ennemyGraphic = new GraphicElement(stateViewPlay->getImg(name));
     ennemyGraphic->setPosition(ennemy->getX(), ennemy->getY());
     ennemyGraphic->Resize(w, h);
     ennemyGraphic->setId(ennemy->getId());
 
+    // Linking the ennemy and its movable element and adding it to the view
     stateViewPlay->setGraphicToMovableElem(ennemyGraphic, ennemy);
     this->addElement(ennemy);
 }

@@ -20,7 +20,13 @@
 					<Add option="-std=gnu++11" />
 					<Add directory="include" />
 					<Add directory="src" />
+					<Add directory="src/" />
 				</Compiler>
+				<ResourceCompiler>
+					<Add directory="src" />
+					<Add directory="include" />
+					<Add directory="UT" />
+				</ResourceCompiler>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/ShootThemUp" prefix_auto="1" extension_auto="1" />
@@ -54,66 +60,41 @@
 			<Add library="sfml-window" />
 			<Add library="sfml-system" />
 		</Linker>
-		<Unit filename="Ennemy.cc" />
-		<Unit filename="Ennemy.h" />
-		<Unit filename="GameEnd.cc" />
-		<Unit filename="GameEnd.h" />
-		<Unit filename="GameMenu.cc" />
-		<Unit filename="GameMenu.h" />
-		<Unit filename="GameModel.cc" />
-		<Unit filename="GameModel.h" />
-		<Unit filename="GameModel_UT.cc">
-			<Option virtualFolder="UnitTests/" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="GamePlay.cc" />
-		<Unit filename="GamePlay.h" />
-		<Unit filename="GamePlay_UT.cc">
-			<Option virtualFolder="UnitTests/" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="GameState.cc" />
-		<Unit filename="GameState.h" />
-		<Unit filename="GameView.cc" />
-		<Unit filename="GameView.h" />
-		<Unit filename="GraphicElement.cc" />
-		<Unit filename="GraphicElement.h" />
-		<Unit filename="MovableElement.cc" />
-		<Unit filename="MovableElement.h" />
-		<Unit filename="MovableElement_UT.cc">
-			<Option virtualFolder="UnitTests/" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="Player.cc" />
-		<Unit filename="Player.h" />
-		<Unit filename="Player_UT.cc">
-			<Option virtualFolder="UnitTests/" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="Projectile.cc" />
-		<Unit filename="Projectile.h" />
-		<Unit filename="Projectile_UT.cc">
-			<Option virtualFolder="UnitTests/" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="Spaceship.cc" />
-		<Unit filename="Spaceship.h" />
-		<Unit filename="Spaceship_UT.cc">
-			<Option virtualFolder="UnitTests/" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="StateView.cc" />
-		<Unit filename="StateView.h" />
-		<Unit filename="StateViewMenu.cc" />
-		<Unit filename="StateViewMenu.h" />
-		<Unit filename="StateViewPlay.cc" />
-		<Unit filename="StateViewPlay.h" />
-		<Unit filename="Weapon.cc" />
-		<Unit filename="Weapon.h" />
-		<Unit filename="main.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="include/Ennemy.h" />
+		<Unit filename="include/GameEnd.h" />
+		<Unit filename="include/GameMenu.h" />
+		<Unit filename="include/GameModel.h" />
+		<Unit filename="include/GamePlay.h" />
+		<Unit filename="include/GameState.h" />
+		<Unit filename="include/GameStateView.h" />
+		<Unit filename="include/GameView.h" />
+		<Unit filename="include/GraphicElement.h" />
+		<Unit filename="include/MovableElement.h" />
+		<Unit filename="include/Player.h" />
+		<Unit filename="include/Projectile.h" />
+		<Unit filename="include/Spaceship.h" />
+		<Unit filename="include/StateView.h" />
+		<Unit filename="include/StateViewMenu.h" />
+		<Unit filename="include/StateViewPlay.h" />
+		<Unit filename="include/Weapon.h" />
+		<Unit filename="src/Ennemy.cc" />
+		<Unit filename="src/GameEnd.cc" />
+		<Unit filename="src/GameMenu.cc" />
+		<Unit filename="src/GameModel.cc" />
+		<Unit filename="src/GamePlay.cc" />
+		<Unit filename="src/GameState.cc" />
+		<Unit filename="src/GameStateView.cc" />
+		<Unit filename="src/GameView.cc" />
+		<Unit filename="src/GraphicElement.cc" />
+		<Unit filename="src/MovableElement.cc" />
+		<Unit filename="src/Player.cc" />
+		<Unit filename="src/Projectile.cc" />
+		<Unit filename="src/Spaceship.cc" />
+		<Unit filename="src/StateView.cc" />
+		<Unit filename="src/StateViewMenu.cc" />
+		<Unit filename="src/StateViewPlay.cc" />
+		<Unit filename="src/Weapon.cc" />
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

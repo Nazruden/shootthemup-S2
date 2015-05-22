@@ -5,6 +5,7 @@
 #include "../include/GamePlay.h"
 #include "../include/GameState.h"
 #include "../include/Player.h"
+#include "../include/Weapon.h"
 #include "../include/GraphicElement.h"
 
 #include <iostream>
@@ -135,23 +136,27 @@ sf::Image* StateViewPlay::getImg(std::string imgName)
 
 void StateViewPlay::update()
 {
-    // Updating text elements
     GamePlay* statePlay = dynamic_cast<GamePlay*>(_state);
 
+    // Updating text elements
     _score.SetText( to_string(statePlay->getPlayer()->getScore()) );
     _lifepoints.SetText( to_string(statePlay->getPlayer()->getLifePoints()) );
     _level.SetText("Level : " + to_string(statePlay->getLevel()) );
     _nbLives.SetText( to_string(statePlay->getPlayer()->getLives()) );
 
+    // Updating the shot state of the player weapon
+    if(statePlay->getPlayer()->getScore() > 100)
+        statePlay->getPlayer()->getCurrentWeapon()->unlockSecondaryShoot();
+    else if(statePlay->getPlayer()->getScore() > 500)
+        statePlay->getPlayer()->getCurrentWeapon()->unlockThirdShoot();
+
+    // Updating the position of each sprite
     for (auto it = _graphicToMovable.begin(); it != _graphicToMovable.end(); it++)
     {
         if (it->second != nullptr)
         {
-            // Updating the position of each sprite
-            int x = it->second->getX();
-            int y = it->second->getY();
             it->first->nextFrame();
-            it->first->setPosition(x, y);
+            it->first->setPosition(sf::Vector2f(it->second->getX(), it->second->getY()));
         }
     }
 

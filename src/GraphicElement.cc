@@ -9,15 +9,15 @@ using namespace std;
 using namespace sf;
 
 /*** Constructors / Destructors ***/
-GraphicElement::GraphicElement():  Sprite(), _w(0), _h(0), _nbFrames(0), _currentFrame(0), _perpetual(false)
+GraphicElement::GraphicElement():  Sprite(), _w(0), _h(0), _nbFrames(-1), _currentFrame(0), _perpetual(false)
 {}
-
-GraphicElement::GraphicElement(Image *image) : Sprite(*image), _nbFrames(0), _currentFrame(0), _perpetual(false)
+// Constructor with image
+GraphicElement::GraphicElement(Image *image) : Sprite(*image), _nbFrames(-1), _currentFrame(0), _perpetual(false)
 {}
-
+// Constructor with image and number of frames
 GraphicElement::GraphicElement(Image * image, int nbFrames) : Sprite(*image), _nbFrames(nbFrames), _currentFrame(1), _perpetual(false)
 {}
-
+// Constructor with image, number of frames and starting frame
 GraphicElement::GraphicElement(Image * image, int nbFrames, int firstFrame) : Sprite(*image), _nbFrames(nbFrames), _currentFrame(firstFrame), _perpetual(false)
 {}
 
@@ -38,25 +38,25 @@ bool GraphicElement::isPerpetual(){
 void GraphicElement::setPerpetual(bool perpetuality){
     _perpetual = perpetuality;
 }
+
+// nextFrame :
+//      - the graphicElement will reach his nextFrame of animation
+//      - does nothing if he has no animation or if its animation ended
 void GraphicElement::nextFrame(){
     // If the graphicElement's animation didn't end
-    if(_perpetual || _currentFrame < _nbFrames)
+    if((int)_currentFrame <= _nbFrames && (int)_currentFrame != -1)
     {
-        _currentFrame++;
         SetSubRect(sf::IntRect(
-                ((_currentFrame)-1) * this->GetSubRect().GetWidth() ,
+                (((int)_currentFrame)-1) * this->GetSubRect().GetWidth() ,
                 0 ,
-                (_currentFrame) * this->GetSubRect().GetWidth() ,
+                ((int)_currentFrame) * this->GetSubRect().GetWidth() ,
                 this->GetSubRect().GetHeight()
             ));
-        cout << " Setting the nextFrame of element " << this->getId() << endl;
-        cout << " Next frame : " << endl
-            <<  "\t  new X :  " <<  (_currentFrame) * this->GetSubRect().GetWidth() << endl
-            << " \t last X : " << (_currentFrame-1) * this->GetSubRect().GetWidth() << endl;
         // Resetting the frame of a perpetual animation ending
-        if(_perpetual && _currentFrame == _nbFrames)
+        if(_perpetual && (int)_currentFrame == _nbFrames)
             _currentFrame = 1;
 
+        _currentFrame += 0.1;
     }
 }
 void GraphicElement::setNumberFrames(int nbFrames){

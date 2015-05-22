@@ -10,6 +10,7 @@ class Weapon
         std::string _name;
         int _supply;
         int _shotState;
+        int _nbShotStates;
         Projectile* _projectile;
         Spaceship* _holder;
         bool _infinite;
@@ -32,7 +33,9 @@ class Weapon
         void shoot();
         void primaryShoot();
         void secondaryShoot();
+        void unlockSecondaryShoot();
         void thirdShoot();
+        void unlockThirdShoot();
 };
 
 #endif // WEAPON_H

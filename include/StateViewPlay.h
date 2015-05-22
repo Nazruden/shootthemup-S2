@@ -40,6 +40,7 @@ private:
     sf::String _lifepoints;
     sf::String _nbLives;
     sf::String _level;
+    sf::String _eventToNotice;
 
 public:
     // Constructors / Destructors

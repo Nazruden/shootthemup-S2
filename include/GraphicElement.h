@@ -12,7 +12,7 @@ private:
     int _id;
     int _w, _h;
     int _nbFrames;
-    int _currentFrame;
+    float _currentFrame;
     bool _perpetual;
 
 public:

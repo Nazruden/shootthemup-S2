@@ -51,4 +51,4 @@ class Player : public Spaceship
 
 };
 
-#endif
+#endif // PLAYER_H

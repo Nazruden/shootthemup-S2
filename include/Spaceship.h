@@ -38,4 +38,4 @@ class Spaceship : public MovableElement
         void freeProjectiles();
 };
 
-#endif
+#endif // SPACESHIP_H
