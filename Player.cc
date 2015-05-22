@@ -75,7 +75,7 @@ void Player::changeWeaponState(bool moreOrLess)
         _currentWeapon->nextShotState();
     }
     else
-        _currentWeapon->nextShotState();
+        _currentWeapon->lastShotState();
 }
 bool Player::hasLost()
 {

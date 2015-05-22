@@ -79,7 +79,7 @@ StateViewPlay::StateViewPlay(std::string title, sf::RenderWindow* window, sf::Fo
     _score.SetSize(20.f);
     _score.SetPosition(SCORE_X, SCORE_Y);
 
-    _lifepoints.SetColor(sf::Color::White);
+    _lifepoints.SetColor(sf::Color::Black);
     _lifepoints.SetFont(*_font);
     _lifepoints.SetSize(20.f);
     _lifepoints.SetPosition(LIFEPOINTS_X, LIFEPOINTS_Y);
@@ -89,7 +89,7 @@ StateViewPlay::StateViewPlay(std::string title, sf::RenderWindow* window, sf::Fo
     _level.SetSize(20.f);
     _level.SetPosition(LEVEL_X, LEVEL_Y);
 
-    _nbLives.SetColor(sf::Color::White);
+    _nbLives.SetColor(sf::Color::Black);
     _nbLives.SetFont(*_font);
     _nbLives.SetSize(20.f);
     _nbLives.SetPosition(NBLIVES_X, NBLIVES_Y);

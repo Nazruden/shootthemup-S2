@@ -26,11 +26,11 @@ Weapon::~Weapon()
 /*** Accessors ***/
 void Weapon::nextShotState(){
     if(_shotState<2)
-        ++_shotState;
+        _shotState++;
 }
 void Weapon::lastShotState(){
     if(_shotState>0)
-        --_shotState;
+        _shotState--;
 }
 int Weapon::getShotState(){
     return _shotState;
