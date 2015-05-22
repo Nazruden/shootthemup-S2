@@ -37,6 +37,8 @@ public:
     int getH();
     void setX(int x);
     void setY(int y);
+    void setW(int w);
+    void setH(int h);
     void setDX(int dx);
     void setDY(int dy);
 

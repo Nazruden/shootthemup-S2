@@ -79,7 +79,7 @@ void Weapon::primaryShoot()
 
         StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(p->getGamePlay()->getStateView());
 
-        GraphicElement* projectileGraphic = new GraphicElement(stateViewPlay->getImg("shot"));
+        GraphicElement* projectileGraphic = new GraphicElement(stateViewPlay->getImg("blue_shot"));
         projectileGraphic->setPosition(p->getX(), p->getY());
         projectileGraphic->SetSubRect(sf::IntRect(0, 0, 46, 20));
         projectileGraphic->setId(p->getId());
@@ -141,12 +141,15 @@ void Weapon::thirdShoot()
     if(hasSupply())
     {
         Projectile* p = new Projectile(_projectile);
-        cout << "new projectile of id " << p->getId()<< endl;
+        p->setDamages(this->getProjectileDamages() * 3);
+        p->setW(p->getW() * 8);
+        p->setH(p->getH() * 2);
 
         StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(p->getGamePlay()->getStateView());
 
-        GraphicElement* projectileGraphic = new GraphicElement(stateViewPlay->getImg("shot"));
+        GraphicElement* projectileGraphic = new GraphicElement(stateViewPlay->getImg("purple_shot"));
         projectileGraphic->setPosition(p->getX(), p->getY());
+        projectileGraphic->Resize(p->getW(), p->getH());
         projectileGraphic->SetSubRect(sf::IntRect(0, 0, 46, 20));
         projectileGraphic->setId(p->getId());
 

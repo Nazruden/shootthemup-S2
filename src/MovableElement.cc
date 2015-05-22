@@ -84,6 +84,16 @@ void MovableElement::setY(int y)
     _y = y;
 }
 
+void MovableElement::setW(int w)
+{
+    _w = w;
+}
+
+void MovableElement::setH(int h)
+{
+    _h = h;
+}
+
 void MovableElement::setDX(int dx){
     _dx = dx;
 }

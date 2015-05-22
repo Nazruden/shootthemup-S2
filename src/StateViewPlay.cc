@@ -52,14 +52,16 @@ StateViewPlay::StateViewPlay(std::string title, sf::RenderWindow* window, sf::Fo
     // Loading the other images
     sf::Image img;
 
+    // Projectiles
     img.LoadFromFile("img/new/Projectiles/blue_projectiles.png");
-    _images["shot"] = img;
+    _images["blue_shot"] = img;
 
-    // Other projectiles
     img.LoadFromFile("img/new/Projectiles/yellow_projectiles.png");
     _images["yellow_shot"] = img;
+
     img.LoadFromFile("img/new/Projectiles/purple_projectiles.png");
     _images["purple_shot"] = img;
+
     img.LoadFromFile("img/new/Projectiles/red_projectiles.png");
     _images["red_shot"] = img;
 
