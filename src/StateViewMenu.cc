@@ -220,8 +220,6 @@ void StateViewMenu::treatEvents()
                 for (auto button : _menuButtons)
                     button->SetSubRect(sf::IntRect(BUTTON_W, 0, BUTTON_W*2, BUTTON_H));
             }
-
-            _window->Display();
         }
     }
 }
