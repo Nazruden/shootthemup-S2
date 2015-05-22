@@ -108,17 +108,17 @@ void Weapon::secondaryShoot()
 
             StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(p1->getGamePlay()->getStateView());
 
-            GraphicElement* projectileGraphic1 = new GraphicElement(stateViewPlay->getImg("red_shot"));
+            GraphicElement* projectileGraphic1 = new GraphicElement(stateViewPlay->getImg("red_shot"), 2);
             projectileGraphic1->setPosition(p1->getX(), p1->getY());
             projectileGraphic1->SetSubRect(sf::IntRect(0, 0, 46, 20));
             projectileGraphic1->setId(p1->getId());
 
-            GraphicElement* projectileGraphic2 = new GraphicElement(stateViewPlay->getImg("red_shot"));
+            GraphicElement* projectileGraphic2 = new GraphicElement(stateViewPlay->getImg("red_shot"), 2);
             projectileGraphic2->setPosition(p2->getX(), p2->getY());
             projectileGraphic2->SetSubRect(sf::IntRect(0, 0, 46, 20));
             projectileGraphic2->setId(p2->getId());
 
-            GraphicElement* projectileGraphic3 = new GraphicElement(stateViewPlay->getImg("red_shot"));
+            GraphicElement* projectileGraphic3 = new GraphicElement(stateViewPlay->getImg("red_shot"), 2);
             projectileGraphic3->setPosition(p3->getX(), p3->getY());
             projectileGraphic3->SetSubRect(sf::IntRect(0, 0, 46, 20));
             projectileGraphic3->setId(p3->getId());

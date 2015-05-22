@@ -31,6 +31,7 @@ public:
     int getId();
     void setId(int id);
     bool isPerpetual();
+    void setNumberFrames(int nbFrames);
     void setPerpetual(bool perpetuality);
     void nextFrame();
     void setPosition(const sf::Vector2f & pos);
