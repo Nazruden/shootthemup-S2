@@ -217,7 +217,10 @@ void GamePlay::update()
 
 
     else if(_player->getLives() == 0)
+    {
+        this->clearElements();
         _model->setState(_model->getState("gameEnd")); /** SEG FAULT **/
+    }
 
     // Incrementing phase
     _phase++;
