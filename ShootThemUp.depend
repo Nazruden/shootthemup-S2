@@ -1864,7 +1864,7 @@
 	"../include/Spaceship.h"
 	<string>
 
-1432295934 /home/edao/Documents/Projet/Code/STU/include/Spaceship.h
+1432327555 /home/edao/Documents/Projet/Code/STU/include/Spaceship.h
 	"../include/MovableElement.h"
 	<set>
 	<vector>
@@ -1891,12 +1891,12 @@
 	<string>
 	<vector>
 
-1432295934 /home/edao/Documents/Projet/Code/STU/include/Player.h
+1432327555 /home/edao/Documents/Projet/Code/STU/include/Player.h
 	"../include/Spaceship.h"
 	<string>
 	<set>
 
-1432295934 /home/edao/Documents/Projet/Code/STU/include/Weapon.h
+1432327555 /home/edao/Documents/Projet/Code/STU/include/Weapon.h
 	"../include/Player.h"
 
 1432295934 source:/home/edao/Documents/Projet/Code/STU/src/GameEnd.cc
@@ -1925,7 +1925,7 @@
 1432220202 /home/edao/Documents/Projet/Code/STU/include/StateView.h
 	<SFML/Graphics.hpp>
 
-1432297780 source:/home/edao/Documents/Projet/Code/STU/src/GamePlay.cc
+1432327555 source:/home/edao/Documents/Projet/Code/STU/src/GamePlay.cc
 	"../include/GamePlay.h"
 	"../include/Player.h"
 	"../include/Ennemy.h"
@@ -1938,11 +1938,11 @@
 	<map>
 	<vector>
 
-1432295934 /home/edao/Documents/Projet/Code/STU/include/StateViewPlay.h
+1432327555 /home/edao/Documents/Projet/Code/STU/include/StateViewPlay.h
 	<SFML/Graphics.hpp>
 	"../include/StateView.h"
 
-1432313190 /home/edao/Documents/Projet/Code/STU/include/GraphicElement.h
+1432327555 /home/edao/Documents/Projet/Code/STU/include/GraphicElement.h
 	<SFML/Graphics.hpp>
 
 1432295934 source:/home/edao/Documents/Projet/Code/STU/src/GameState.cc
@@ -1975,7 +1975,7 @@
 	<SFML/Graphics.hpp>
 	"../include/StateView.h"
 
-1432313190 source:/home/edao/Documents/Projet/Code/STU/src/GraphicElement.cc
+1432327555 source:/home/edao/Documents/Projet/Code/STU/src/GraphicElement.cc
 	"../include/GraphicElement.h"
 	<iostream>
 
@@ -2023,15 +2023,16 @@
 	"../include/GameState.h"
 	<iostream>
 
-1432300137 source:/home/edao/Documents/Projet/Code/STU/src/StateViewPlay.cc
+1432327555 source:/home/edao/Documents/Projet/Code/STU/src/StateViewPlay.cc
 	"../include/StateViewPlay.h"
 	"../include/GamePlay.h"
 	"../include/GameState.h"
 	"../include/Player.h"
+	"../include/Weapon.h"
 	"../include/GraphicElement.h"
 	<iostream>
 
-1432313190 source:/home/edao/Documents/Projet/Code/STU/src/Weapon.cc
+1432327555 source:/home/edao/Documents/Projet/Code/STU/src/Weapon.cc
 	"../include/Weapon.h"
 	"../include/Projectile.h"
 	"../include/GraphicElement.h"

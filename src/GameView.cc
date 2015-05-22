@@ -29,7 +29,7 @@ GameView::GameView(GameModel* model) : _model(model), _w(VIEW_WIDTH), _h(VIEW_HE
     stateViewPlay->setState(_model->getState("gamePlay"));
     _stateViews.push_back(stateViewPlay);
 
-    _font.LoadFromFile("Antique Olive.ttf");
+    _font.LoadFromFile("polices/Antique Olive.ttf");
 }
 
 GameView::~GameView()
