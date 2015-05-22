@@ -11,8 +11,7 @@ BOOST_AUTO_TEST_CASE(collide)
 
     Projectile* newProjectile = new Projectile
         (nullptr, player->getX() + player->getW(), player->getY(), BASIC_PROJECTILE_WIDTH, BASIC_PROJECTILE_HEIGHT, PROJECTILE_SPEED_INIT_PLAYER, 0,
-         PROJECTILE_NAME_INIT_PLAYER, PROJECTILE_DAMAGES_INIT_PLAYER,
-         PROJECTILE_SUPPLY_INIT_PLAYER, PROJECTILE_RANGE_INIT_PLAYER);
+         PROJECTILE_NAME_INIT_PLAYER, PROJECTILE_DAMAGES_INIT_PLAYER);
 
     BOOST_CHECK(!newProjectile->collideLeft(player));
     BOOST_CHECK(!newProjectile->collideBottom(player));

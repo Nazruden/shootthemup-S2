@@ -55,8 +55,6 @@ bool Weapon::hasSupply()
 
 void Weapon::shoot()
 {
-    cout << "shot state : " << _shotState << endl;
-
     switch(_shotState)
     {
         case (0):
@@ -104,9 +102,6 @@ void Weapon::secondaryShoot()
             Projectile* p1 = new Projectile(_projectile);
             Projectile* p2 = new Projectile(_projectile);
             Projectile* p3 = new Projectile(_projectile);
-            cout << "new projectile of id " << p1->getId()<< endl;
-            cout << "new projectile of id " << p2->getId()<< endl;
-            cout << "new projectile of id " << p3->getId()<< endl;
 
             p1->setDY(-8);
             p3->setDY(8);

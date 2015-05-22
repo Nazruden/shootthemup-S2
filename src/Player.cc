@@ -19,8 +19,7 @@ Player::Player(GamePlay* gamePlay, int x, int y, int w, int h, int dx, int dy, i
     // Adding a basic weapon composed of a basic projectile
     Projectile* basicProjectile = new Projectile
         (gamePlay, _x + _w + 1, _y, BASIC_PROJECTILE_WIDTH, BASIC_PROJECTILE_HEIGHT, PROJECTILE_SPEED_INIT_PLAYER, 0,
-         PROJECTILE_NAME_INIT_PLAYER, PROJECTILE_DAMAGES_INIT_PLAYER,
-         PROJECTILE_SUPPLY_INIT_PLAYER, PROJECTILE_RANGE_INIT_PLAYER, this);
+         PROJECTILE_NAME_INIT_PLAYER, PROJECTILE_DAMAGES_INIT_PLAYER, this);
     Weapon* basicWeapon = new Weapon("basicPlayerWeapon", -1, basicProjectile, this);
     this->addWeapon(basicWeapon);
     _currentWeapon = basicWeapon;

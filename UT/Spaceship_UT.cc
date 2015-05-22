@@ -25,8 +25,7 @@ BOOST_AUTO_TEST_CASE(addWeapon)
 
     Projectile* newProjectile = new Projectile
         (nullptr, player->getX(), player->getY(), BASIC_PROJECTILE_WIDTH, BASIC_PROJECTILE_HEIGHT, PROJECTILE_SPEED_INIT_PLAYER, 0,
-         PROJECTILE_NAME_INIT_PLAYER, PROJECTILE_DAMAGES_INIT_PLAYER,
-         PROJECTILE_SUPPLY_INIT_PLAYER, PROJECTILE_RANGE_INIT_PLAYER);
+         PROJECTILE_NAME_INIT_PLAYER, PROJECTILE_DAMAGES_INIT_PLAYER);
     Weapon* newWeapon = new Weapon("NewWeapon", -1, newProjectile, player);
 
     BOOST_CHECK(player->getNumberWeapons() == 1);

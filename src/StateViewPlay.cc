@@ -217,6 +217,7 @@ void StateViewPlay::treatEvents()
             }
         }
     }
+    // Fluidity of movements
     if (statePlay != nullptr)
         {
             // Getting an input linked to the opened window

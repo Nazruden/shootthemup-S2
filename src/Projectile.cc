@@ -9,11 +9,11 @@
 using namespace std;
 
 /*** Ctors / Dtors ***/
-Projectile::Projectile(GamePlay* gamePlay, int x, int y, int w, int h, int dx, int dy, string name, int damages, int supply, int range, Spaceship* shooter)
-    : MovableElement(gamePlay, x, y, w, h, dx, dy, name), _damages(damages), _supply(supply), _range(range), _shooter(shooter) {}
+Projectile::Projectile(GamePlay* gamePlay, int x, int y, int w, int h, int dx, int dy, string name, int damages, Spaceship* shooter)
+    : MovableElement(gamePlay, x, y, w, h, dx, dy, name), _damages(damages), _shooter(shooter) {}
 
 Projectile::Projectile(Projectile* autre) : MovableElement(autre->_gamePlay, autre->_x, autre->_y, autre->_w, autre->_h, autre->_dx, autre->_dy,
-            autre->_name), _damages(autre->_damages), _supply(autre->_supply), _range(autre->_range), _shooter(autre->_shooter) {}
+            autre->_name), _damages(autre->_damages), _shooter(autre->_shooter) {}
 
 Projectile::~Projectile()
 {
