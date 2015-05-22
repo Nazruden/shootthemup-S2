@@ -37,6 +37,8 @@ public:
     int getH();
     void setX(int x);
     void setY(int y);
+    void setDX(int dx);
+    void setDY(int dy);
 
     // Methods
     virtual std::string toString();

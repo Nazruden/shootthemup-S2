@@ -16,6 +16,9 @@ class GameEnd : public GameState
         GameEnd(std::string title, GameModel* model);
         // Accessors
         void setWinState(bool winState);
+        bool getWinState();
+        void setEndMessage(std::string endMessage);
+        std::string getEndMessage();
         // Methods
         void update() override;
 };

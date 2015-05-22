@@ -13,9 +13,18 @@ GameEnd::GameEnd(string title, GameModel* model) : GameState(title, model), _won
 }
 
 /*** Accessors ***/
-void GameEnd::setWinState(bool winState)
-{
+void GameEnd::setWinState(bool winState){
     _won = winState;
+}
+bool GameEnd::getWinState(){
+    return _won;
+}
+
+void GameEnd::setEndMessage(string endMessage){
+    _endMessage = endMessage;
+}
+string GameEnd::getEndMessage(){
+    return _endMessage;
 }
 
 /*** Methods ***/

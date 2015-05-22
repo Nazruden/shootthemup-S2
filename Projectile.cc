@@ -85,6 +85,8 @@ bool Projectile::update()
 {
     // Projectiles have a negative speed so that they'll move left
     moveRight();
+    // and specific y-axis speed
+    moveUp();
 
     // If the projectile entirely gets out of the screen
     if (_x >= GAMEPLAY_WIDTH || _x +_w <= 0)

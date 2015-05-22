@@ -36,7 +36,7 @@ StateViewPlay::StateViewPlay(std::string title, sf::RenderWindow* window, sf::Fo
         GraphicElement* player = new GraphicElement(&_playerImg);
         player->setPosition(PLAYER_X_INIT, PLAYER_Y_INIT);
         player->SetSubRect(sf::IntRect(0, 0, 300, 200));
-        player->Resize(PLAYER_WIDTH, PLAYER_HEIGHT);
+        player->Resize(PLAYER_WIDTH, PLAYER_HEIGHT+10);
         player->setId(0);
         // Will be linked to the player after
         _graphicToMovable[player] = nullptr;
@@ -57,8 +57,11 @@ StateViewPlay::StateViewPlay(std::string title, sf::RenderWindow* window, sf::Fo
 
     // Other projectiles
     img.LoadFromFile("img/new/Projectiles/yellow_projectiles.png");
+    _images["yellow_shot"] = img;
     img.LoadFromFile("img/new/Projectiles/purple_projectiles.png");
+    _images["purple_shot"] = img;
     img.LoadFromFile("img/new/Projectiles/red_projectiles.png");
+    _images["red_shot"] = img;
 
     // Ennemies
     img.LoadFromFile("img/ennemy_0.png");
@@ -206,6 +209,11 @@ void StateViewPlay::treatEvents()
 
                 else if (event.Key.Code == sf::Key::Right)
                     statePlay->getPlayer()->moveRight();
+                // Changing weapon
+                else if (event.Key.Code == sf::Key::N) // Incrementing weapon id
+                    statePlay->getPlayer()->changeWeaponState(false);
+                else if (event.Key.Code == sf::Key::B) // Decrementing weapon id
+                    statePlay->getPlayer()->changeWeaponState(true);
             }
         }
     }
@@ -225,15 +233,6 @@ void StateViewPlay::treatEvents()
 
             else if (Input.IsKeyDown(sf::Key::Right))
                 statePlay->getPlayer()->moveRight();
-
-            // Changing weapon
-            else if (Input.IsKeyDown(sf::Key::N)) // Incrementing weapon id
-                cout << "Changing weapon : ++" << endl;
-                // A REMPLIR
-            else if (Input.IsKeyDown(sf::Key::B)) // Decrementing weapon id
-                cout << "Changing weapon : --" << endl;
-                // A REMPLIR
-
         }
 }
 

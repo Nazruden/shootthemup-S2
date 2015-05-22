@@ -8,7 +8,7 @@
 using namespace std;
 
 /*** Ctors / Dtors ***/
-Weapon::Weapon(string name, int supply, Projectile* projectile, Spaceship* holder) : _name(name), _supply(supply), _projectile(projectile), _holder(holder)
+Weapon::Weapon(string name, int supply, Projectile* projectile, Spaceship* holder) : _name(name), _supply(supply), _projectile(projectile), _holder(holder), _shotState(0)
 {
     if(_supply!=-1)
         _infinite = false;
@@ -23,6 +23,18 @@ Weapon::~Weapon()
         delete _projectile;
 }
 
+/*** Accessors ***/
+void Weapon::nextShotState(){
+    if(_shotState<2)
+        ++_shotState;
+}
+void Weapon::lastShotState(){
+    if(_shotState>0)
+        --_shotState;
+}
+int Weapon::getShotState(){
+    return _shotState;
+}
 int Weapon::getProjectileDamages()
 {
     return _projectile->getDamages();
@@ -43,6 +55,95 @@ bool Weapon::hasSupply()
 }
 
 void Weapon::shoot()
+{   cout << endl << endl << endl;
+    cout << "shot state : " << _shotState << endl;
+    cout << endl << endl << endl;
+    switch(_shotState)
+    {
+        case (0):
+            primaryShoot();
+            break;
+        case (1):
+            secondaryShoot();
+            break;
+        case (2):
+            thirdShoot();
+            break;
+        default:
+            break;
+    }
+}
+
+void Weapon::primaryShoot()
+{
+    if(hasSupply())
+    {
+        Projectile* p = new Projectile(_projectile);
+        cout << "new projectile of id " << p->getId()<< endl;
+
+        StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(p->getGamePlay()->getStateView());
+
+        GraphicElement* projectileGraphic = new GraphicElement(stateViewPlay->getImg("shot"));
+        projectileGraphic->setPosition(p->getX(), p->getY());
+        projectileGraphic->SetSubRect(sf::IntRect(0, 0, 46, 20));
+        projectileGraphic->setId(p->getId());
+
+        stateViewPlay->setGraphicToMovableElem(projectileGraphic, p);
+        p->getGamePlay()->addElement(p);
+
+        if (!_infinite)
+            _supply--;
+    }
+}
+
+void Weapon::secondaryShoot()
+{
+    Player* player = dynamic_cast<Player*>(_holder);
+    if (player != nullptr)
+    {
+        if(hasSupply())
+        {
+            Projectile* p1 = new Projectile(_projectile);
+            Projectile* p2 = new Projectile(_projectile);
+            Projectile* p3 = new Projectile(_projectile);
+            cout << "new projectile of id " << p1->getId()<< endl;
+            cout << "new projectile of id " << p2->getId()<< endl;
+            cout << "new projectile of id " << p3->getId()<< endl;
+
+            p1->setDY(-8);
+            p3->setDY(8);
+
+            StateViewPlay* stateViewPlay = dynamic_cast<StateViewPlay*>(p1->getGamePlay()->getStateView());
+
+            GraphicElement* projectileGraphic1 = new GraphicElement(stateViewPlay->getImg("red_shot"));
+            projectileGraphic1->setPosition(p1->getX(), p1->getY());
+            projectileGraphic1->SetSubRect(sf::IntRect(0, 0, 46, 20));
+            projectileGraphic1->setId(p1->getId());
+
+            GraphicElement* projectileGraphic2 = new GraphicElement(stateViewPlay->getImg("red_shot"));
+            projectileGraphic2->setPosition(p2->getX(), p2->getY());
+            projectileGraphic2->SetSubRect(sf::IntRect(0, 0, 46, 20));
+            projectileGraphic2->setId(p2->getId());
+
+            GraphicElement* projectileGraphic3 = new GraphicElement(stateViewPlay->getImg("red_shot"));
+            projectileGraphic3->setPosition(p3->getX(), p3->getY());
+            projectileGraphic3->SetSubRect(sf::IntRect(0, 0, 46, 20));
+            projectileGraphic3->setId(p3->getId());
+
+            stateViewPlay->setGraphicToMovableElem(projectileGraphic1, p1);
+            stateViewPlay->setGraphicToMovableElem(projectileGraphic2, p2);
+            stateViewPlay->setGraphicToMovableElem(projectileGraphic3, p3);
+            p1->getGamePlay()->addElement(p1);
+            p2->getGamePlay()->addElement(p2);
+            p3->getGamePlay()->addElement(p3);
+
+            if (!_infinite)
+                _supply--;
+        }
+    }
+}
+
+void Weapon::thirdShoot()
 {
     if(hasSupply())
     {

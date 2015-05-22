@@ -13,7 +13,7 @@ const int PLAYER_Y_INIT = 300;
 const int PLAYER_SPEED_X = 7;
 const int PLAYER_SPEED_Y = 7;
 const int PLAYER_WIDTH = 70;
-const int PLAYER_HEIGHT = 70;
+const int PLAYER_HEIGHT = 60;
 const int PLAYER_LIFEPOINTS_INIT = 100;
 const int PLAYER_DISTANCE_PER_FRAME = 1;
 
@@ -41,6 +41,7 @@ class Player : public Spaceship
         void moveDown() override;
         void moveLeft() override;
         void moveRight() override;
+        void changeWeaponState(bool moreOrLess);
         void dies();
         bool hasLost();
         void computeScore(int value);

@@ -68,6 +68,15 @@ void Player::moveRight()
     this->MovableElement::moveRight();
 }
 
+void Player::changeWeaponState(bool moreOrLess)
+{
+    if(moreOrLess)
+    {
+        _currentWeapon->nextShotState();
+    }
+    else
+        _currentWeapon->nextShotState();
+}
 bool Player::hasLost()
 {
     if (_nbLives == 0)

@@ -83,6 +83,13 @@ void MovableElement::setY(int y)
     _y = y;
 }
 
+void MovableElement::setDX(int dx){
+    _dx = dx;
+}
+
+void MovableElement::setDY(int dy){
+    _dy = dy;
+}
 /*** Methods ***/
 // Returns the name and the position of a movableElement
 string MovableElement::toString()
