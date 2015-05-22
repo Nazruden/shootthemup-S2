@@ -102,6 +102,8 @@ string GamePlay::displayControls() const
     controls += "Move down : DOWN\n";
     controls += "Move left : LEFT\n";
     controls += "Move right : RIGHT\n";
+    controls += "Next type of projectiles : B\n";
+    controls += "Previous type of projectiles : N\n";
     controls += "----------------";
     return controls;
 }
